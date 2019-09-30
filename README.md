@@ -11,7 +11,6 @@
 |Column|Type|Options|
 |------|----|-------|
 |group_name|string|null: false|
-|group_id|integer|null: false, foreign_key: true|
 
 # groups_usersテーブル
 |Column|Type|Options|
