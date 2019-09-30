@@ -40,6 +40,7 @@
 ### Association
 - belongs_to :group
 - belongs_to :user
+
 Need to deal with the problem at view phase that both body and image are null 
 
 This README would normally document whatever steps are necessary to get the
