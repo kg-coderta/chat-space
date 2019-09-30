@@ -1,5 +1,10 @@
 # README
 
+# usersテーブル
+# groupsテーブル
+# groups_usersテーブル
+# messagesテーブル
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
