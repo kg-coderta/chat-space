@@ -1,9 +1,17 @@
 # README
 
 # usersテーブル
+|Column|Type|Options|
+|------|----|-------|
 # groupsテーブル
+|Column|Type|Options|
+|------|----|-------|
 # groups_usersテーブル
+|Column|Type|Options|
+|------|----|-------|
 # messagesテーブル
+|Column|Type|Options|
+|------|----|-------|
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
