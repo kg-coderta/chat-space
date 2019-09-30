@@ -33,13 +33,14 @@
 ## messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false|
+|body|text|
 |image|string|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :group
 - belongs_to :user
+Need to deal with the problem at view phase that both body and image are null 
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
