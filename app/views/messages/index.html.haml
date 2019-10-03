@@ -1,5 +1,4 @@
-.change
-  グループを作成しました
+ 
 .wrapper
   .side
     .top
@@ -35,28 +34,16 @@
         .header__member
           Member : test
     .messages
-      .message
-        .message-box
-          .message-box__name
-            test-user
-          .message-box__date
-            2019/12/12(Tue) 17:50:55
-          .message-box__text
-            こんにちは！
-      .message
-        .message-box
-          .message-box__name
-            test-user2
-          .message-box__date
-            2019/12/13(Wed) 17:50:55
-          .message-box__text
-            さようなら
+      = render partial: 'message', collection: @messages
+
     .footer
-      .form
-        type a message   
-        =link_to "", class: "form__icon" do
-          = fa_icon 'image'        
-      .send
-        Send
+      
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
      
      
