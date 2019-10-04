@@ -1,38 +1,20 @@
  
 .wrapper
-  .side
-    .top
-      .top-box 
-        test  
-        =link_to "http://localhost:3000/users/edit", class: "top-box__icon" do
-          = fa_icon 'cog'
-        =link_to "http://localhost:3000/users/sign_out", class: "top-box__icon" do
-          = fa_icon 'edit'
-    .bottom
-      .main
-        .main__name
-          test2
-        .main__comment
-          さようなら
-      .main
-        .main__name
-          sample-group
-        .main__comment
-          hello!
-      .main
-        .main__name
-          example
-        .main__comment
-          まだメッセージがありません
-  .contents 
-    .head
-      .header
-        .header__edit
-          Edit
-        .header__group
-          test-group
-        .header__member
-          Member : test
+
+  = render 'shared/side_bar'
+  .chat
+    .header
+      .left-header
+        .left-header__title
+          = @group.name
+        %ul.left-header__members
+          Member：
+          %li.member
+            = @group.users
+      
+      .right-header
+        .right-header__button
+          = link_to 'Edit',edit_group_path(@group) 
     .messages
       = render partial: 'message', collection: @messages
 
