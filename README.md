@@ -33,7 +33,7 @@
 ## messagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|body|text|
+|body|content|
 |image|string|
 |user_id|integer|null: false, foreign_key: true|
 |group_id|integer|null: false, foreign_key: true|
