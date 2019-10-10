@@ -45,8 +45,7 @@ $(function(){
     .done(function(message){
       var html = buildMessage(message)
       $(".messages"). append(html)
-      $('#message_content').val('');
-      $("lower-message__image").val(" ")
+      $("#new_message")[0].reset();
       $('.hidden').val('');
       scroll();
       $(".form__submit").attr("disabled",false);
