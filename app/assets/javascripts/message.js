@@ -1,5 +1,7 @@
+
 $(function(){
   function buildMessage(message){
+    var image = message.image == null ? "" : `<img src="${message.image}" class="lower-message__image">`
     var html = `<div class="message">
                   <div class="upper-message">
                     <div class="upper-message__user-name">
@@ -13,7 +15,7 @@ $(function(){
                     <p class="lower-message__content">
                       ${message.content}
                     </p>
-                    <img class="lower-message__image" src="${message.image}">
+                    ${image}
                   </div>
                 </div>`             
     return html;
@@ -44,6 +46,8 @@ $(function(){
       var html = buildMessage(message)
       $(".messages"). append(html)
       $('#message_content').val('');
+      $("lower-message__image").val(" ")
+      $('.hidden').val('');
       scroll();
       $(".form__submit").attr("disabled",false);
     })
