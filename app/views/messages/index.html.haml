@@ -1,6 +1,4 @@
- 
 .wrapper
-
   = render 'shared/side_bar'
   .chat
     .header
@@ -9,18 +7,13 @@
           = @group.name
         %ul.left-header__members
           Member：
-          %li.member
-            -# - @groups.each do |user|
-            -#   = user.name 
-      
+          %li.member      
       .right-header
         .right-header__button
           = link_to 'Edit',edit_group_path(@group) 
     .messages
       = render partial: 'message', collection: @messages
-
-    .footer
-      
+    .footer   
       = form_for [@group, @message] do |f|
         = f.text_field :content, class: 'form__message', placeholder: 'type a message'
         .form__mask
