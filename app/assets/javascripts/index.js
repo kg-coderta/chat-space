@@ -19,7 +19,7 @@ $(function() {
     $("#user-search-result").append(html);              
   }
 
-  $("#user-search-field").on("keyup", function() {
+  $(document).on("keyup","#user-search-field", function() {
     var input = $("#user-search-field").val();
     $.ajax({
       url: "/users",
@@ -27,7 +27,7 @@ $(function() {
       data: {search: input},
       dataType: "json"
     })
-  
+   
     .done(function(users){
       $("#user-search-result").empty();
       if(users.length !== 0){
@@ -47,25 +47,23 @@ $(function() {
   function addUser(user){
   var id = $(user).attr("data-user-id")
   var name = $(user).attr("data-user-name")
-
   var html = `<div class='chat-group-user'>
-  <input name='group[user_ids][]' type='hidden' value='${id}'>
-  <p class='chat-group-user__name'>
-    ${name}
-  </p>
-  <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
-</div>`
-$(".chat-group-users").append(html)
+                <input name='group[user_ids][]' type='hidden' value='${id}'>
+                <p class='chat-group-user__name'>
+                  ${name}
+                </p>
+              <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
+              </div>`
+  $(".chat-group-users").append(html)
   }
 
-  $("#user-search-result").on("click", ".user-search-add", function(e){
+  $(document).on("click", ".user-search-add", function(e){
     $(this).parent().remove();
     var user = e.target;
     addUser(user) 
-    console.log(user)
   })
 
-  $(".chat-group-users").on("click", ".user-search-remove", function(e){
+  $(document).on("click", ".user-search-remove", function(){
     $(this).parent().remove();
   })
 });
