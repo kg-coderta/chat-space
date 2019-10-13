@@ -46,7 +46,6 @@ $(function(){
       var html = buildMessage(message)
       $(".messages"). append(html)
       $("#new_message")[0].reset();
-      $('.hidden').val('');
       scroll();
       $(".form__submit").attr("disabled",false);
     })
