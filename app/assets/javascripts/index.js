@@ -45,8 +45,8 @@ $(function() {
   });
   
   function addUser(user){
-  var id = $(user).attr("data-user-id")
-  var name = $(user).attr("data-user-name")
+  var id = $(user).data("userId")
+  var name = $(user).data("userName")
   var html = `<div class='chat-group-user'>
                 <input name='group[user_ids][]' type='hidden' value='${id}'>
                 <p class='chat-group-user__name'>
