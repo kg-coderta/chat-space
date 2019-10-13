@@ -53,4 +53,3 @@ $(function(){
   }
   setInterval(reloadMessages, 2500);
 });
-
