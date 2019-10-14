@@ -21,6 +21,31 @@ $(function(){
     return html;
   }
 
+  $('#new_message').on('submit', function(e){
+    e.preventDefault();
+    var formData = new FormData(this)
+    var url = $(this).attr("action")
+    $.ajax({
+      url: url,
+      type: "POST",
+      data: formData,
+      dataType: "json",
+      processData: false,
+      contentType: false
+    })
+
+    .done(function(message){
+      var html = buildMessage(message)
+      $(".messages"). append(html)
+      $("#new_message")[0].reset();
+      scroll();
+      $(".form__submit").attr("disabled",false);
+    })
+    .fail(function(message){
+    alert("メッセージを入力してください")
+    })
+  })
+  
   function scroll(){
     var target = $('.message').last();
     var position = target.offset().top + $('.messages').scrollTop() ;
