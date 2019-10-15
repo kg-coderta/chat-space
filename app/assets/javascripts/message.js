@@ -8,7 +8,7 @@ $(function(){
                       ${message.user_name}
                     </div>
                     <div class="upper-message__date">
-                      ${message.date}
+                      ${message.created_at}
                     </div>
                   </div>
                   <div class="lower-message">
@@ -65,11 +65,15 @@ $(function(){
       })
       .done(function(messages) {
         var insertHTML = " ";
+        // if (messages.length !== 0)
         messages.forEach(function(message){
-        insertHTML = buildMessage(message)
-        $('.messages').append(insertHTML)
+        if (last_message_id < message.id || last_message_id == null){ 
+          insertHTML = buildMessage(message)
+          $('.messages').append(insertHTML)
+          scroll();
+        }
         })
-        $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+        
       })
       .fail(function() {
         alert('error');
