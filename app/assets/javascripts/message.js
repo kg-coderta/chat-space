@@ -65,7 +65,6 @@ $(function(){
       })
       .done(function(messages) {
         var insertHTML = " ";
-        // if (messages.length !== 0)
         messages.forEach(function(message){
         if (last_message_id < message.id || last_message_id == null){ 
           insertHTML = buildMessage(message)
