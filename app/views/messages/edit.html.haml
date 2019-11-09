@@ -1,0 +1,79 @@
+.registration_container
+  = render 'devise/registrations/progress_header'
+  .registration_container__main
+    %section.registration_container__main__contents
+      .registration_container__main__contents__head
+        %h2 会員情報入力
+        -# form_withテーブル作成後に値を要変更
+      = form_with model: @user, url: step2_signup_index_path, method: :get, id: 'new_user', class: 'new_user', local: true do |f|
+        = f.fields_for :profile do |b|  
+          .fields
+            .field
+              = f.label :nickname, 'ニックネーム'
+              %span.must 必須
+              %br/
+              = f.text_field :nickname, autofocus: true, autocomplete: "nickname", placeholder: '例) メルカリ太郎', class: 'input-default'
+            .field
+              = f.label :email, 'メールアドレス'
+              %span.must 必須
+              %br/
+              = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可", class: 'input-default'
+            .field
+              = f.label :password, 'パスワード'
+              %span.must 必須
+              %br/
+              = f.password_field :password, autocomplete: "new-password", placeholder: '7文字以上', class: 'input-default'
+            .field
+              = f.label :password_confirmation, 'パスワード(確認)'
+              %span.must 必須
+              %br/
+              = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: '7文字以上', class: 'input-default'
+            .field
+              %h3
+                本人確認
+              %p.one_text
+                安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+        
+            .field 
+              = b.label :name, value: "お名前(全角)"
+              %span.must 必須
+              %br/
+              = b.text_field :last_name, autofocus: true, autocomplete: "name", placeholder: '例) 山田', class: 'input-default-half'
+              = b.text_field :first_name, autofocus: true, autocomplete: "name", placeholder: '例) 彩',class: 'input-default-half'
+            .field
+              = b.label :name, value: "お名前カナ(全角)"
+              %span.must 必須
+              %br/
+              = b.text_field :last_name_kana, autofocus: true, autocomplete: "name", placeholder: '例) ヤマダ',class: 'input-default-half'
+              = b.text_field :first_name_kana, autofocus: true, autocomplete: "name", placeholder: '例) アヤ',class: 'input-default-half'
+            .field
+              = f.label :name, value: "生年月日"
+              %span.must 必須
+              %br
+              -# != sprintf(b.date_select(:year_birth_at,:month_birth_at, prompt: "--", with_css_class: 'select-default', use_month_numbers: true, start_year: Time.now.year, end_year: 1900,date_separator: '%s', datetime_separator: '%s'), '年', '月')+'日'
+            %p.text_info
+              ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+          .fields
+            .captcha_field
+              %iframe{:frameborder => "0", :height => "78", :name => "a-38838jypnvsv", :role => "presentation", :sandbox => "allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox", :scrolling => "no", :src => "https://www.google.com/recaptcha/api2/anchor?ar=2&k=6LfZGCYTAAAAAHoK-s7Lg5OdYg5Fq4susvALmZoc&co=aHR0cHM6Ly93d3cubWVyY2FyaS5jb206NDQz&hl=ja&v=66WEle60vY1w2WveBS-1ZMFs&size=normal&cb=dvbyimtcw8ym", :width => "304"}
+            .field
+              %p.rule-box
+                「次へ進む」のボタンを押すことにより、
+                = link_to "利用規約", "", class: 'rule'
+                に同意したものとみなします
+            .actions
+              = f.submit "次へ進む", class: 'next-btn', value: '次へ進む'
+            .field.text-right
+              %p.check_text
+                = link_to "本人情報の登録について", root_path,  class: 'check'
+                = fa_icon 'chevron-right', class: 'right-icon'
+  = render 'devise/registrations/footer'
+
+:css
+  li.one{
+    color: #ea352d !important;
+    font-weight: 600 !important;
+  }
+  .progress_status.first{
+    background: #ea352d !important;
+  }
